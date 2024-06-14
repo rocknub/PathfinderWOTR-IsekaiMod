@@ -6,32 +6,6 @@ This is a content mod for `Pathfinder: Wrath of the Righteous` that adds an `Ise
 ### Setup
 - Add `WrathPath` as an environment variable with the value `C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure` or wherever your game directory is.
 - Open Visual Studio and [publicize your assemblies](https://github.com/WittleWolfie/OwlcatModdingWiki/wiki/Publicize-Assemblies).
-### Testing
-- Create a folder called `IsekaiMod` in `C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods`.
-- After building your solution in Visual Studio, go to your project directory -> `bin` -> `Release` or `Debug` -> `IsekaiMod` -> `net472`.
-- Copy the files and folders from the diagram below and place them in the `IsekaiMod` folder you created.
-- You'll need to create the `UserSettings` folder. Copy the `AddedContent.json` and the `Blueprints.json` files from the project and place them inside.
-```
-C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\Mods\IsekaiMod
-
-IsekaiMod/
-├── Assets/
-│   └── ...
-├── Localization/
-│   └── LocalizationPack.json
-├── UserSettings/
-│   ├── AddedContent.json
-│   └── Blueprints.json
-├── Info.json
-├── IsekaiMod.dll
-└── ModKit.dll
-```
-- For the Assets make sure you have the Portraits. Copy them from a [Release](https://github.com/JohN100x1/WOTR_IsekaiMod/releases).
-- Now you can start your game and test.
-
-On subsequent tests you'll only need to copy the `IsekaiMod.dll`.
-- If you edited the blueprint names, copy `Blueprints.json` as well.
-- If you added new assets, copy those as well.
 ## Mod Information
 ### Requirements
 - [Unity Mod Manager](https://www.nexusmods.com/site/mods/21).

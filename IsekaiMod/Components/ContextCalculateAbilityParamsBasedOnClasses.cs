@@ -77,7 +77,7 @@ namespace IsekaiMod.Components {
             base.ApplyValidation(context, parentIndex);
             if (!StatType.IsAttribute() && StatType != StatType.BaseAttackBonus) {
                 string text = string.Join(", ", from s in StatTypeHelper.Attributes select s.ToString());
-                context.AddError("StatType must be Base Attack Bonus or an attribute: {0}", text, Array.Empty<object>());
+                context.AddError(ErrorLevel.Unprioritized, "StatType must be Base Attack Bonus or an attribute: {0}", text, Array.Empty<object>());
             }
         }
 

@@ -4,6 +4,7 @@ using Kingmaker.EntitySystem.Stats;
 using Kingmaker.PubSubSystem;
 using Kingmaker.RuleSystem;
 using Kingmaker.UnitLogic;
+using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.Utility;
 using System;
 
@@ -12,8 +13,8 @@ namespace IsekaiMod.Components {
     [TypeId("d104b3fcf9094fae838ad3793767348c")]
     public class ExtraSummonCount : UnitFactComponentDelegate, ISubscriber, IGlobalSubscriber, ICalculateSummonUnitsCount {
         public int Count;
-        public void HandleCalculateSummonUnitsCount(UnitEntityData unit, DiceType diceType, int diceCount, int diceBonus, ref int count) {
-            if (unit != Owner) {
+        public void HandleCalculateSummonUnitsCount(MechanicsContext mechanicsContext, ContextDiceValue contextDiceValue, ref int count) {
+            if (mechanicsContext.MaybeCaster != Owner) {
                 return;
             }
             count += GetMaxStat();

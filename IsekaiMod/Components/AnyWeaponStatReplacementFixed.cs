@@ -22,7 +22,7 @@ namespace IsekaiMod.Components {
 
                 // Fix: apply the 1.5x two-handed bonus on non-strength, non-dexterity damage stat
                 if (Stat == StatType.Strength || Stat == StatType.Dexterity) return;
-                if (evt.Weapon.HoldInTwoHands || (evt.SlotToInsert != null && evt.Weapon.ShouldHoldInTwoHands(evt.SlotToInsert))) {
+                if (evt.Weapon.HoldInTwoHands || evt.Weapon.CanTakeTwoHands()) {
                     evt.OverrideDamageBonusStatMultiplier(1.5f);
                 }
             }
