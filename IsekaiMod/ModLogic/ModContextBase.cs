@@ -15,8 +15,8 @@ namespace IsekaiMod.ModLogic {
         }
 
         public override void LoadAllSettings() {
-            LoadSettings("AddedContent.json", "IsekaiMod.UserSettings", ref AddedContent);
-            LoadBlueprints("IsekaiMod.UserSettings", this);
+            LoadSettings("AddedContent.json", "IsekaiMod.Config", ref AddedContent);
+            LoadBlueprints("IsekaiMod.Config", this);
             LoadLocalization("IsekaiMod.Localization");
         }
 
