@@ -22,7 +22,12 @@ namespace IsekaiMod.Components {
 
                 // Fix: apply the 1.5x two-handed bonus on non-strength, non-dexterity damage stat
                 if (Stat == StatType.Strength || Stat == StatType.Dexterity) return;
-                if (evt.Weapon.HoldInTwoHands || evt.Weapon.CanTakeTwoHands()) {
+                
+                if (evt.Weapon.HoldInTwoHands 
+                    || (evt.SlotToInsert != null 
+                        && evt.Weapon.CanTakeTwoHands() 
+                        && (evt.SlotToInsert.HandsEquipmentSet.GripType == Kingmaker.Items.GripType.TwoHanded 
+                            || !evt.Weapon.CanTakeOneHand()))) {
                     evt.OverrideDamageBonusStatMultiplier(1.5f);
                 }
             }
