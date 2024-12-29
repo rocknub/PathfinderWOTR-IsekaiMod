@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\AssemblyPublicizer.1.0.2\build\AssemblyPublicizer.props" Condition="Exists('..\packages\AssemblyPublicizer.1.0.2\build\AssemblyPublicizer.props')" />
   <Import Project="$(SolutionDir)packages\Aze.Publicise.MSBuild.Task.1.1.0\build\Aze.Publicise.MSBuild.Task.props" Condition="Exists('$(SolutionDir)packages\Aze.Publicise.MSBuild.Task.1.1.0\build\Aze.Publicise.MSBuild.Task.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -62,20 +63,25 @@
     <Move SourceFiles="$(SolutionDir)lib/Assembly-CSharp_public.dll" DestinationFiles="$(SolutionDir)\lib\Assembly-CSharp.dll" />
   </Target>
   <ItemGroup>
+    <Reference Include="0Harmony, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.3.3\lib\net48\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(SolutionDir)lib\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="0Harmony, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>$(WrathPath)\Wrath_Data\Managed\0Harmony.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="AssemblyPublicizer, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AssemblyPublicizer.1.0.2\lib\net472\AssemblyPublicizer.dll</HintPath>
+    </Reference>
+    <Reference Include="dnlib, Version=3.1.0.0, Culture=neutral, PublicKeyToken=50e96378b6e77999, processorArchitecture=MSIL">
+      <HintPath>..\packages\dnlib.3.1.0\lib\net461\dnlib.dll</HintPath>
     </Reference>
     <Reference Include="Owlcat.Runtime.Visual">
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Owlcat.Runtime.Visual.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="TabletopTweaks-Core">
-      <HintPath>$(WrathPath)\mods\TabletopTweaks-Core\TabletopTweaks-Core.dll</HintPath>
+      <HintPath>G:\Download\TabletopTweaks-Core\TabletopTweaks-Core\TabletopTweaks-Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
@@ -136,16 +142,15 @@
       <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityModManager">
-      <HintPath>$(WrathPath)\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="AstarPathfindingProject">
       <HintPath>$(WrathPath)\Wrath_Data\Managed\AstarPathfindingProject.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>$(WrathPath)\Wrath_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityModManager, Version=0.31.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnityModManager.0.31.1\lib\net35\UnityModManager.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +187,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="TabletopTweaks-Core.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Assets\Deities\ICON_ADMIN_D.png">
@@ -500,6 +506,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)packages\Aze.Publicise.MSBuild.Task.1.1.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)packages\Aze.Publicise.MSBuild.Task.1.1.0\build\Aze.Publicise.MSBuild.Task.props'))" />
     <Error Condition="!Exists('..\packages\Aze.Publicise.MSBuild.Task.1.1.0\build\Aze.Publicise.MSBuild.Task.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Aze.Publicise.MSBuild.Task.1.1.0\build\Aze.Publicise.MSBuild.Task.props'))" />
+    <Error Condition="!Exists('..\packages\AssemblyPublicizer.1.0.2\build\AssemblyPublicizer.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\AssemblyPublicizer.1.0.2\build\AssemblyPublicizer.props'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>(robocopy "$(TargetDir) " "%25WrathPath%25\Mods\IsekaiMod\ " /s /e )^&amp; IF %25ERRORLEVEL%25 LEQ 1 exit 0</PostBuildEvent>
